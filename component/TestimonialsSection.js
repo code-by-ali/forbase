@@ -1,7 +1,6 @@
 import React from "react";
 import { TestimonialCard } from "./CommonComponents";
 
-
 const TestimonialsSection = () => {
   return (
     <section className="py-32 px-6 bg-[#0F0F0F]">

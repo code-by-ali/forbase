@@ -1,22 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-
-import Navigation from "./component/Navigation";
-import MobileMenu from "./component/MobileMenu";
-import HeroSection from "./component/HeroSection";
-import ClientsMarquee from "./component/ClientsMarquee";
-import WhyChooseUsSection from "./component/WhyChooseUsSection";
-import ServicesSection from "./component/ServicesSection";
-import ProjectsSection from "./component/ProjectsSection";
-import ProcessSection from "./component/ProcessSection";
-import PricingSection from "./component/PricingSection";
-import TestimonialsSection from "./component/TestimonialsSection";
-import AboutSection from "./component/AboutSection";
-import FAQSection from "./component/FAQSection";
-import ContactSection from "./component/ContactSection";
-import Footer from "./component/Footer";
-import { ScrollProgress } from "./component/CommonComponents";
+import AboutSection from "@/component/AboutSection";
+import ClientsMarquee from "@/component/ClientsMarquee";
+import { ScrollProgress } from "@/component/CommonComponents";
+import ContactSection from "@/component/ContactSection";
+import FAQSection from "@/component/FAQSection";
+import Footer from "@/component/Footer";
+import HeroSection from "@/component/HeroSection";
+import MobileMenu from "@/component/MobileMenu";
+import Navigation from "@/component/Navigation";
+import PricingSection from "@/component/PricingSection";
+import ProcessSection from "@/component/ProcessSection";
+import ProjectsSection from "@/component/ProjectsSection";
+import ServicesSection from "@/component/ServicesSection";
+import TestimonialsSection from "@/component/TestimonialsSection";
+import WhyChooseUsSection from "@/component/WhyChooseUsSection";
 
 // ========================
 // Main App Component
