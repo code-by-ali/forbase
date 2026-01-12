@@ -1,61 +1,50 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import AboutSection from "@/component/AboutSection";
-import ClientsMarquee from "@/component/ClientsMarquee";
-import { ScrollProgress } from "@/component/CommonComponents";
-import ContactSection from "@/component/ContactSection";
-import FAQSection from "@/component/FAQSection";
-import Footer from "@/component/Footer";
-import HeroSection from "@/component/HeroSection";
-import MobileMenu from "@/component/MobileMenu";
+import React, { useState } from "react";
+import { useScroll, useTransform } from "framer-motion";
+
 import Navigation from "@/component/Navigation";
-import PricingSection from "@/component/PricingSection";
-import ProcessSection from "@/component/ProcessSection";
-import ProjectsSection from "@/component/ProjectsSection";
-import ServicesSection from "@/component/ServicesSection";
-import TestimonialsSection from "@/component/TestimonialsSection";
+import MobileMenu from "@/component/MobileMenu";
+import HeroSection from "@/component/HeroSection";
 import WhyChooseUsSection from "@/component/WhyChooseUsSection";
+// import ProjectsSection from "@/component/ProjectsSection";
+// import ServicesSection from "@/component/ServicesSection";
+// import ProcessSection from "@/component/ProcessSection";
+// import TestimonialsSection from "@/component/TestimonialsSection";
+// import AboutTeamSection from "@/component/AboutTeamSection";
+// import BlogSection from "@/component/BlogSection";
+// import FAQSection from "@/component/FAQSection";
+// import MarqueeLogoSection from "@/component/MarqueeLogoSection";
+// import ContactSection from "@/component/ContactSection";
+// import Footer from "@/component/Footer";
+import "./globals.css";
 
-// ========================
-// Main App Component
-// ========================
-const FortexWebsite = () => {
+export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const updateScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      setScrollPercentage(Math.min(scrollPercent, 100));
-    };
-
-    window.addEventListener("scroll", updateScroll);
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, []);
+  // Parallax effect for hero section
+  const heroY = useTransform(scrollY, [0, 500], [0, 50]);
+  const heroOpacity = useTransform(scrollY, [0, 300], [1, 1]);
 
   return (
-    <div className="bg-[#0A0A0A] text-white font-sans overflow-x-hidden">
+    <main className="bg-white">
       <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <HeroSection />
-      <ClientsMarquee />
+      <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
       <WhyChooseUsSection />
+      {/* <ProjectsSection />
       <ServicesSection />
-      <ProjectsSection />
       <ProcessSection />
-      <PricingSection />
       <TestimonialsSection />
-      <AboutSection />
+      <AboutTeamSection />
+      <BlogSection />
       <FAQSection />
+      <MarqueeLogoSection />
       <ContactSection />
-      <Footer />
-      <ScrollProgress percentage={scrollPercentage} />
-    </div>
-  );
-};
+      <Footer /> */}
 
-export default FortexWebsite;
+      {/* More sections coming soon */}
+    </main>
+  );
+}

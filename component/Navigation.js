@@ -1,42 +1,52 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const Navigation = ({ isMenuOpen, setIsMenuOpen }) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/80 backdrop-blur-xl border-b border-white/5"
+      transition={{ duration: 0.6 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/20 backdrop-blur-lg shadow-lg py-4"
+          : "bg-transparent py-6"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-8xl mx-auto px-6 flex items-center justify-between">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="text-2xl font-bold cursor-pointer"
+          className="text-3xl md:text-4xl font-bold cursor-pointer text-primary"
         >
-          Fortex<span className="text-orange-500">®</span>
+          Forbase.
         </motion.div>
 
-        <div className="hidden md:flex items-center gap-8">
-          {["Home", "About", "Projects", "Careers", "Blog", "Contact"].map(
-            (item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                whileHover={{ color: "#f97316" }}
-                className="text-sm text-white/70 hover:text-white transition-colors cursor-pointer"
-              >
-                {item}
-              </motion.a>
-            )
-          )}
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="hidden md:flex items-center gap-2 px-6 py-2 bg-white text-primary rounded-full text-sm font-medium"
+        >
+          Get in Touch <ArrowUpRight />
+        </motion.button>
 
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden"
         >
-          {isMenuOpen ? <X /> : <Menu />}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
     </motion.nav>

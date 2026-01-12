@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <AnimatePresence>
@@ -10,27 +9,33 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
           initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: "100%" }}
-          className="fixed inset-0 z-40 bg-[#0A0A0A] md:hidden pt-20 px-6"
+          transition={{ type: "spring", damping: 25 }}
+          className="fixed inset-0 z-40 bg-white md:hidden pt-24 px-6"
         >
-          {["Home", "About", "Projects", "Careers", "Blog", "Contact"].map(
-            (item, i) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                onClick={() => setIsMenuOpen(false)}
-                className="block py-4 text-2xl border-b border-white/10 hover:text-orange-500 transition-colors"
-              >
-                {item}
-              </motion.a>
-            )
-          )}
+          {["LYNKS.", "PLANS.", "ABOUT.", "BLOG."].map((item, i) => (
+            <motion.a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.1 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="block py-4 text-2xl font-medium border-b border-gray-200 hover:text-orange-500 transition-colors"
+            >
+              {item}
+            </motion.a>
+          ))}
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="w-full mt-8 px-6 py-3 bg-orange-500 text-white rounded-full text-lg font-medium"
+          >
+            Get Tech →
+          </motion.button>
         </motion.div>
       )}
     </AnimatePresence>
   );
 };
-
 export default MobileMenu;
