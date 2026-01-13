@@ -7,7 +7,7 @@ import Navigation from "@/component/Navigation";
 import MobileMenu from "@/component/MobileMenu";
 import HeroSection from "@/component/HeroSection";
 import WhyChooseUsSection from "@/component/WhyChooseUsSection";
-// import ProjectsSection from "@/component/ProjectsSection";
+import ProjectsSection from "@/component/ProjectsSection";
 // import ServicesSection from "@/component/ServicesSection";
 // import ProcessSection from "@/component/ProcessSection";
 // import TestimonialsSection from "@/component/TestimonialsSection";
@@ -33,8 +33,8 @@ export default function Home() {
       <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
       <WhyChooseUsSection />
-      {/* <ProjectsSection />
-      <ServicesSection />
+      <ProjectsSection />
+      {/* <ServicesSection />
       <ProcessSection />
       <TestimonialsSection />
       <AboutTeamSection />
