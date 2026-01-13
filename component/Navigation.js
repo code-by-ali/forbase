@@ -22,7 +22,7 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }) => {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/20 backdrop-blur-lg shadow-lg py-4"
+          ? "bg-white/10 backdrop-blur-sm shadow-lg py-4"
           : "bg-transparent py-6"
       }`}
     >

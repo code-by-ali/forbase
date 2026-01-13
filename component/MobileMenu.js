@@ -20,7 +20,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
               onClick={() => setIsMenuOpen(false)}
-              className="block py-4 text-2xl font-medium border-b border-gray-200 hover:text-orange-500 transition-colors"
+              className="block py-4 text-2xl font-medium border-b border-gray-200 text-primary hover:text-orange-500 transition-colors"
             >
               {item}
             </motion.a>
