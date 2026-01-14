@@ -204,7 +204,7 @@ const SatisfactionBox = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="bg-linear-to-br from-[#e7b1a9] to-[#F44930] p-8 text-white relative overflow-hidden"
+      className="bg-linear-to-br from-[#e7b1a9] to-[#F44930] p-8 text-white relative overflow-hidden min-h-[22rem] md:min-h-[28rem]"
     >
       <CommonImage
         src={SatisfactionCardImg.src || SatisfactionCardImg}
@@ -263,7 +263,7 @@ const FlexiblePricingBox = () => {
       initial={{ opacity: 0, scale: 1.1 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.8 }}
-      className="bg-white overflow-hidden lg:row-span-2 relative"
+      className="bg-white overflow-hidden lg:row-span-2 relative min-h-[22rem] md:min-h-[28rem] lg:min-h-[36rem]"
     >
       <motion.img
         src={FlexibleCardImg.src || FlexibleCardImg}

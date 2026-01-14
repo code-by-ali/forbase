@@ -12,7 +12,7 @@ const HeroSection = ({ heroY, heroOpacity }) => {
     <motion.section
       ref={heroRef}
       style={{ y: heroY, opacity: heroOpacity }}
-      className="relative min-h-screen flex flex-col items-center pt-20 pb-20 overflow-hidden"
+      className="relative bg-[#FBF8F3] min-h-screen flex flex-col items-center pt-20 pb-20 overflow-hidden"
     >
       <div className="absolute left-5/10 ">
         <CommonImage src={HeroGradientBG.src || HeroGradientBG} />
@@ -28,14 +28,14 @@ const HeroSection = ({ heroY, heroOpacity }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-[#0A1628]"
+            className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight text-primary"
           >
             Forbase
             <br />
-            <span className="text-[#0A1628]">Solutions for</span>
+            <span className="text-primary">Solutions for</span>
             <br />
-            <span className="text-[#0A1628]">Business</span>
-            <span className="text-orange-500">.</span>
+            <span className="text-primary">Business</span>
+            <span className="text-secondary">.</span>
           </motion.h1>
         </motion.div>
 
@@ -50,7 +50,7 @@ const HeroSection = ({ heroY, heroOpacity }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-gray-600 mb-8 max-w-md"
+            className="text-lg text-primary/60 mb-8 max-w-md"
           >
             SCROLL
           </motion.p>
@@ -59,7 +59,7 @@ const HeroSection = ({ heroY, heroOpacity }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-gray-600 mb-8 max-w-md"
+            className="text-lg text-primary mb-8 max-w-md"
           >
             Identify the key barriers that prevent your business from reaching
             its full potential. Addressing these issues can transform your

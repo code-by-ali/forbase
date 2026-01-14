@@ -18,6 +18,8 @@ import ProjectsSection from "@/component/ProjectsSection";
 // import ContactSection from "@/component/ContactSection";
 // import Footer from "@/component/Footer";
 import "./globals.css";
+import ProcessSection from "@/component/ProcessSection";
+import ServicesSection from "@/component/ServicesSection";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +36,9 @@ export default function Home() {
       <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
       <WhyChooseUsSection />
       <ProjectsSection />
-      {/* <ServicesSection />
+      <ServicesSection />
       <ProcessSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection />
       <AboutTeamSection />
       <BlogSection />
       <FAQSection />
