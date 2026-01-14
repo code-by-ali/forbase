@@ -12,7 +12,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
           transition={{ type: "spring", damping: 25 }}
           className="fixed inset-0 z-40 bg-white md:hidden pt-24 px-6"
         >
-          {["LYNKS.", "PLANS.", "ABOUT.", "BLOG."].map((item, i) => (
+          {["Projects", "Services", "dafs", "BLOG."].map((item, i) => (
             <motion.a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -29,7 +29,7 @@ const MobileMenu = ({ isMenuOpen, setIsMenuOpen }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="w-full mt-8 px-6 py-3 bg-orange-500 text-white rounded-full text-lg font-medium"
+            className="w-full mt-8 px-6 py-3 bg-secondary text-white rounded-full text-lg font-medium"
           >
             Get Tech →
           </motion.button>

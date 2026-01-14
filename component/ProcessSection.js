@@ -127,7 +127,7 @@ const ProcessSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex items-center justify-end gap-4 mt-12"
+            className="flex items-center justify-end gap-4 mt-0 lg:mt-12"
           >
             <button
               onClick={handlePrev}

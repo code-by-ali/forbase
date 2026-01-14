@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const Navigation = ({ isMenuOpen, setIsMenuOpen }) => {
+const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -41,13 +41,6 @@ const Navigation = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           Get in Touch <ArrowUpRight />
         </motion.button>
-
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
     </motion.nav>
   );

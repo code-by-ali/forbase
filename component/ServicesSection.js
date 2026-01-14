@@ -108,6 +108,7 @@ const ServiceItem = ({ service, index, isOpen, toggleItem, isInView }) => {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="relative border-b border-primary/10 last:border-b-0 overflow-hidden"
+      id="services"
     >
       {/* Animated Dark Border Overlay */}
       <motion.div

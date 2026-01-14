@@ -26,7 +26,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-[#FBF8F3]">
+    <section ref={ref} className="py-20 px-6 bg-[#FBF8F3]" id="contact">
       <div className="max-w-7xl mx-auto">
         {/* Title Section - Full Width */}
         <motion.div

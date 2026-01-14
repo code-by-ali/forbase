@@ -206,94 +206,6 @@ const TestimonialsSection = () => {
 };
 
 // Testimonial Card Component
-const TestimonialCard = ({ testimonial, index, isInView }) => {
-  const hasStats = testimonial.stats && testimonial.stats.length > 0;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`rounded-3xl p-8 ${
-        hasStats ? testimonial.color : "bg-[#F5F5F0]"
-      }`}
-    >
-      {/* Quote Icon */}
-      <div
-        className={`text-4xl mb-4 ${
-          hasStats ? "text-white/30" : "text-orange-500/30"
-        }`}
-      >
-        "
-      </div>
-
-      {/* Rating */}
-      <div className="flex items-center gap-1 mb-4">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <motion.span
-            key={i}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.5 + i * 0.1 }}
-            className={hasStats ? "text-white" : "text-orange-500"}
-          >
-            ★
-          </motion.span>
-        ))}
-      </div>
-
-      {/* Testimonial Text */}
-      <p
-        className={`mb-6 leading-relaxed ${
-          hasStats ? "text-white" : "text-[#0A1628]"
-        }`}
-      >
-        {testimonial.text}
-      </p>
-
-      {/* Stats (if available) */}
-      {hasStats && (
-        <div className="mb-6 space-y-4">
-          {testimonial.stats.map((stat, i) => (
-            <StatItem
-              key={i}
-              stat={stat}
-              isInView={isInView}
-              delay={0.8 + i * 0.2}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Author */}
-      <div className="flex items-center gap-3">
-        <img
-          src={testimonial.avatar}
-          alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover"
-        />
-        <div>
-          <div
-            className={`font-semibold ${
-              hasStats ? "text-white" : "text-[#0A1628]"
-            }`}
-          >
-            {testimonial.name}
-          </div>
-          <div
-            className={`text-sm ${
-              hasStats ? "text-white/80" : "text-gray-600"
-            }`}
-          >
-            {testimonial.role}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-// Testimonial Card Component
 const TestimonialCard1 = ({ testimonial, index, isInView }) => {
   return (
     <motion.div
@@ -533,7 +445,7 @@ const LeaveReviewButton = () => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: isHovered ? 1 : 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute -bottom-1 left-0 h-0.5 w-full bg-orange-500 origin-left"
+            className="absolute -bottom-1 left-0 h-0.5 w-full bg-secondary origin-left"
           />
         </div>
       </div>

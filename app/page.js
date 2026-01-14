@@ -20,6 +20,7 @@ import ProjectsSection from "@/component/ProjectsSection";
 import "./globals.css";
 import ProcessSection from "@/component/ProcessSection";
 import ServicesSection from "@/component/ServicesSection";
+import FloatingBottomNav from "@/component/FloatingBottomNav";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +33,8 @@ export default function Home() {
   return (
     <main className="bg-white">
       <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-      <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <FloatingBottomNav />
+      {/* <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> */}
       <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
       <WhyChooseUsSection />
       <ProjectsSection />
