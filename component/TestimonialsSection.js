@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowUpRight, Quote } from "lucide-react";
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, {
+    once: false, // Changed from true to false
+    amount: 0.05, // Very low threshold - triggers when just 5% is visible
+    margin: "0px 0px -100px 0px", // Start animation before element enters viewport
+  });
 
   const testimonials = [
     {
@@ -85,7 +89,7 @@ const TestimonialsSection = () => {
           </div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            // animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-6xl md:text-8xl font-medium text-primary mb-2 lg:mb-6">
@@ -101,7 +105,7 @@ const TestimonialsSection = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col justify-end items-end"
           >
@@ -112,7 +116,9 @@ const TestimonialsSection = () => {
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    animate={
+                      isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                    }
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     className="relative"
                   >
@@ -127,7 +133,7 @@ const TestimonialsSection = () => {
             </div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.8, delay: 0.7 }}
               className="text-sm text-primary/60 font-medium text-right"
             >
@@ -136,7 +142,6 @@ const TestimonialsSection = () => {
           </motion.div>
         </div>
 
-        {/* Testimonials Grid */}
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
           {testimonials.map((testimonial, index) =>
@@ -194,7 +199,7 @@ const TestimonialCard1 = ({ testimonial, index, isInView }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="p-8 bg-white flex flex-col gap-6 border border-primary/10"
     >
@@ -210,7 +215,9 @@ const TestimonialCard1 = ({ testimonial, index, isInView }) => {
             <motion.span
               key={i}
               initial={{ opacity: 0, scale: 0 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+              }
               transition={{ delay: 0.5 + i * 0.1 }}
               className="text-secondary fill-secondary"
             >
@@ -250,7 +257,7 @@ const TestimonialCard2 = ({ testimonial, index, isInView }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       className="p-8 bg-secondary flex flex-col gap-6"
     >
@@ -278,7 +285,9 @@ const TestimonialCard2 = ({ testimonial, index, isInView }) => {
             <motion.span
               key={i}
               initial={{ opacity: 0, scale: 0 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+              }
               transition={{ delay: 0.5 + i * 0.1 }}
               className="text-white"
             >
@@ -294,16 +303,18 @@ const TestimonialCard2 = ({ testimonial, index, isInView }) => {
       </p>
 
       {/* Stats (if available) */}
-      <div className="mb-6 space-y-4 mt-auto flex flex-col gap-1 items-end">
-        {testimonial.stats.map((stat, i) => (
-          <StatItem
-            key={i}
-            stat={stat}
-            isInView={isInView}
-            delay={0.8 + i * 0.2}
-          />
-        ))}
-      </div>
+      {testimonial.stats && (
+        <div className="mb-6 space-y-4 mt-auto flex flex-col gap-1 items-end">
+          {testimonial.stats.map((stat, i) => (
+            <StatItem
+              key={i}
+              stat={stat}
+              isInView={isInView}
+              delay={0.8 + i * 0.2}
+            />
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 };
@@ -336,15 +347,15 @@ const StatItem = ({ stat, isInView, delay }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
       transition={{ duration: 0.6, delay }}
     >
-      <div className="text-3xl md:text4xl font-medium text-white text-right tracking-tight">
+      <div className="text-3xl md:text-4xl font-medium text-white text-right tracking-tight">
         {stat.prefix}
         {count}
         {stat.suffix}
       </div>
-      <div className="text-sm mdtext-base text-white text-right tracking-tight">
+      <div className="text-sm md:text-base text-white text-right tracking-tight">
         {stat.label}
       </div>
     </motion.div>
@@ -383,7 +394,7 @@ const StatCard = ({ value, suffix, label, isInView, delay, decimals = 0 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, delay }}
       className="bg-white p-6 min-h-60 flex flex-col justify-between items-start border border-primary/10"
     >
@@ -402,9 +413,9 @@ const ForbaseCard = ({ isInView }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, delay: 0.3 }}
-      className="flex flex-col justify-between border border-primary/10  p-2 "
+      className="flex flex-col justify-between border border-primary/10 p-2"
     >
       <div className="h-full text-primary bg-white flex flex-col gap-2">
         <h3 className="text-3xl md:text-4xl text-primary font-normal">
