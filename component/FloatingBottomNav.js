@@ -36,10 +36,10 @@ const FloatingBottomNav = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-full hover:bg-primary/10 transition-colors group"
+            className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-full group"
           >
-            <item.icon className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
-            <span className="text-[10px] font-medium text-secondary group-hover:text-primary transition-colors">
+            <item.icon className="w-5 h-5 text-secondary" />
+            <span className="text-[10px] font-medium text-secondary ">
               {item.label}
             </span>
           </motion.button>

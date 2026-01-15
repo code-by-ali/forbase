@@ -12,6 +12,7 @@ const HeroSection = ({ heroY, heroOpacity }) => {
     <motion.section
       ref={heroRef}
       style={{ y: heroY, opacity: heroOpacity }}
+      id="home"
       className="relative bg-[#FBF8F3] min-h-screen flex flex-col items-center pt-20 pb-20 overflow-hidden"
     >
       <div className="absolute left-5/10 ">

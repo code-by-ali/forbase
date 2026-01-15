@@ -76,8 +76,8 @@ const TestimonialsSection = () => {
     <section ref={ref} className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-16 flex flex-col md:flex-row justify-between gap-10 md:gap-20">
-          <div className="min-w-60">
+        <div className="mb-16 flex flex-col lg:flex-row justify-between gap-4 lg:gap-20">
+          <div className="min-w-30 lg:min-w-60">
             <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
               <p className="text-secondary">005</p>
               <p className="text-primary font-medium">Testimonials</p>
@@ -88,9 +88,9 @@ const TestimonialsSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-6xl md:text-8xl font-medium text-primary mb-6">
+            <h2 className="text-6xl md:text-8xl font-medium text-primary mb-2 lg:mb-6">
               <span className="text-primary">Client </span>
-              <span className="text-primary/10">stories.</span>
+              <span className="text-primary/40">stories.</span>
             </h2>
             <p className="text-primary/60 text-sm md:text-base max-w-2xl">
               Hear directly from our clients about their experience with
@@ -138,7 +138,7 @@ const TestimonialsSection = () => {
 
         {/* Testimonials Grid */}
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
           {testimonials.map((testimonial, index) =>
             (index + 1) % 2 === 0 ? (
               <TestimonialCard2
@@ -159,7 +159,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Stats Row */}
-        <div className="grid md:grid-cols-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4">
           <StatCard
             value={4.6}
             suffix="s"
@@ -182,23 +182,7 @@ const TestimonialsSection = () => {
             isInView={isInView}
             delay={0.2}
           />
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col justify-between"
-          >
-            <div className="h-full p-6 text-primary bg-white flex flex-col gap-2">
-              <h3 className="text-3xl md:text-4xl text-primary font-normal">
-                FORBASE<sup>®</sup>
-              </h3>
-              <p className="text-sm md:text-base font-medium text-primary/60">
-                If you've enjoyed working with us, we'd love to hear from you —
-                leave a review and help others discover Forbase.
-              </p>
-            </div>
-            <LeaveReviewButton />
-          </motion.div>
+          <ForbaseCard isInView={isInView} />
         </div>
       </div>
     </section>
@@ -212,7 +196,7 @@ const TestimonialCard1 = ({ testimonial, index, isInView }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="p-8 bg-white flex flex-col gap-6"
+      className="p-8 bg-white flex flex-col gap-6 border border-primary/10"
     >
       <div>
         {/* Quote Icon */}
@@ -401,7 +385,7 @@ const StatCard = ({ value, suffix, label, isInView, delay, decimals = 0 }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, delay }}
-      className="bg-white p-6 min-h-60 flex flex-col justify-between items-start"
+      className="bg-white p-6 min-h-60 flex flex-col justify-between items-start border border-primary/10"
     >
       <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary">
         {decimals > 0 ? count.toFixed(decimals) : count}
@@ -414,6 +398,28 @@ const StatCard = ({ value, suffix, label, isInView, delay, decimals = 0 }) => {
   );
 };
 
+const ForbaseCard = ({ isInView }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className="flex flex-col justify-between border border-primary/10  p-2 "
+    >
+      <div className="h-full text-primary bg-white flex flex-col gap-2">
+        <h3 className="text-3xl md:text-4xl text-primary font-normal">
+          FORBASE<sup>®</sup>
+        </h3>
+        <p className="text-sm md:text-base font-medium text-primary/60">
+          If you've enjoyed working with us, we'd love to hear from you — leave
+          a review and help others discover Forbase.
+        </p>
+      </div>
+      <LeaveReviewButton />
+    </motion.div>
+  );
+};
+
 // Leave Review Button Component
 const LeaveReviewButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -422,7 +428,7 @@ const LeaveReviewButton = () => {
     <motion.button
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="relative group"
+      className="relative group mt-6 lg:mt-0"
     >
       <div className="flex justify-end">
         <div
