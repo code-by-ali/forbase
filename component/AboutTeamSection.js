@@ -11,8 +11,6 @@ const imageMotion = {
 };
 
 export default function AboutTeamSection() {
-  const [isHovered, setIsHovered] = useState(false);
-
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   return (
@@ -23,9 +21,9 @@ export default function AboutTeamSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-16 flex flex-col md:flex-row md:justify-between gap-8 md:gap-12 text-primary"
+          className="mb-16 flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 text-primary"
         >
-          <div className="min-w-60">
+          <div className="min-w-30 lg:min-w-60">
             <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
               <p className="text-secondary">002</p>
               <p className="text-primary">Projects </p>
