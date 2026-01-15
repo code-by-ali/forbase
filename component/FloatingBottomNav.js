@@ -2,15 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  Home,
-  Briefcase,
-  Wrench,
-  Mail,
-  Folder,
-  Phone,
-  NotebookPen,
-} from "lucide-react";
+import { Home, Folder, Phone, NotebookPen } from "lucide-react";
 
 const FloatingBottomNav = () => {
   const navItems = [

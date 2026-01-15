@@ -4,23 +4,16 @@ import React, { useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
 import Navigation from "@/component/Navigation";
-import MobileMenu from "@/component/MobileMenu";
+import FloatingBottomNav from "@/component/FloatingBottomNav";
 import HeroSection from "@/component/HeroSection";
 import WhyChooseUsSection from "@/component/WhyChooseUsSection";
 import ProjectsSection from "@/component/ProjectsSection";
-// import ServicesSection from "@/component/ServicesSection";
-// import ProcessSection from "@/component/ProcessSection";
-// import TestimonialsSection from "@/component/TestimonialsSection";
-// import AboutTeamSection from "@/component/AboutTeamSection";
-// import BlogSection from "@/component/BlogSection";
-// import FAQSection from "@/component/FAQSection";
-// import MarqueeLogoSection from "@/component/MarqueeLogoSection";
-// import ContactSection from "@/component/ContactSection";
-// import Footer from "@/component/Footer";
-import "./globals.css";
 import ProcessSection from "@/component/ProcessSection";
 import ServicesSection from "@/component/ServicesSection";
-import FloatingBottomNav from "@/component/FloatingBottomNav";
+
+import "./globals.css";
+import TestimonialsSection from "@/component/TestimonialsSection";
+import AboutTeamSection from "@/component/AboutTeamSection";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,15 +27,14 @@ export default function Home() {
     <main className="bg-white">
       <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <FloatingBottomNav />
-      {/* <MobileMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> */}
       <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
       <WhyChooseUsSection />
       <ProjectsSection />
       <ServicesSection />
       <ProcessSection />
-      {/* <TestimonialsSection />
+      <TestimonialsSection />
       <AboutTeamSection />
-      <BlogSection />
+      {/* <BlogSection />
       <FAQSection />
       <MarqueeLogoSection />
       <ContactSection />
