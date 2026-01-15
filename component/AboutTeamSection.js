@@ -37,7 +37,7 @@ export default function AboutTeamSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-0">
           {/* 1️⃣ Image */}
           <CardImage
             src="https://framerusercontent.com/images/zBc3VzyFnZQObGBbMpJ8wY6Q.png"
@@ -155,7 +155,7 @@ function CardImage({ src, name, role }) {
 
 function CardText({ title, tag, description }) {
   return (
-    <div className="relative bg-[#FBF8F3]  p-8 flex flex-col justify-between">
+    <div className="relative bg-[#FBF8F3] min-h-100 p-8 flex flex-col justify-between border border-primary/10">
       <div className="flex flex-col gap-4">
         <p className="text-sm md:text-base font-normal text-primary/64 text-right">
           {tag} <span className="text-secondary">//</span>
