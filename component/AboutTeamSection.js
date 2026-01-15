@@ -4,9 +4,9 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { useRef } from "react";
 
 const imageMotion = {
-  initial: { scale: 1.2 },
+  initial: { scale: 1.1 },
   whileInView: { scale: 1 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.4, ease: "easeOut" },
   viewport: { once: false, amount: 0.3 },
 };
 
@@ -25,7 +25,7 @@ export default function AboutTeamSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.5 }}
           className="mb-16 flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 text-primary"
         >
           <div className="min-w-30 lg:min-w-60">
@@ -34,7 +34,7 @@ export default function AboutTeamSection() {
               <p className="text-primary">Projects </p>
             </div>
           </div>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary mb-6">
+          <h2 className="text-4xl md:text-7xl lg:text-8xl font-medium text-primary tracking-tight mb-6">
             We're{" "}
             <span className="text-secondary">/designers/, /strategists/, </span>
             and <span className="text-secondary">/developers/</span> helping

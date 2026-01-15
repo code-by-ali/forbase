@@ -11,7 +11,11 @@ import CommonImage from "./CommonImage";
 
 const ProjectsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.05,
+    margin: "0px 0px -100px 0px",
+  });
 
   const projects = [
     {
@@ -25,8 +29,6 @@ const ProjectsSection = () => {
       title: "Lightspeed.",
       description:
         "Real creativity. Tangible results. Discover how we've elevated brands.",
-      image:
-        "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
     },
     {
       id: 2,
@@ -39,8 +41,6 @@ const ProjectsSection = () => {
       title: "Powersurge.",
       description:
         "Thoughtful design strategies that transform business outcomes and drive growth.",
-      image:
-        "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
     },
     {
       id: 3,
@@ -53,8 +53,6 @@ const ProjectsSection = () => {
       title: "Boltshift.",
       description:
         "Seamless development meets innovative design for exceptional digital experiences.",
-      image:
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     },
   ];
 
@@ -68,7 +66,7 @@ const ProjectsSection = () => {
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="mb-12 lg:mb-16 flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-20"
         >
@@ -116,39 +114,26 @@ const ProjectCard = ({ project, index, isInView }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
-      className="relative overflow-hidden cursor-pointer group h-[450px] sm:h-[500px] md:h-[550px] lg:h-[600px]"
+      className="relative overflow-hidden cursor-pointer group h-[240px] sm:h-[500px] md:h-[550px] lg:h-[400px] xl:h-[600px]"
     >
-      {/* Background Image with Zoom - Fixed positioning */}
-      <div className="absolute inset-0 overflow-hidden bg-gray-900">
-        <motion.div
-          animate={{ scale: isHovered ? 1.4 : 1.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="absolute inset-0"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <CommonImage
-            src={project.bgImage.src || project.bgImage}
-            alt={project.name}
-            className="w-full h-full object-cover"
-            style={{
-              minWidth: "100%",
-              minHeight: "100%",
-            }}
-          />
-        </motion.div>
-      </div>
+      {/* Background Image with Zoom */}
+      <motion.div
+        animate={{ scale: isHovered ? 1.1 : 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(projects-card-img-${index + 1}.svg)`,
+        }}
+      />
 
-      {/* Gradient Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
 
       {/* Content Overlay */}
       <div className="relative z-10 h-full flex flex-col justify-between p-4 sm:p-6 md:p-8">
@@ -186,7 +171,7 @@ const ProjectCard = ({ project, index, isInView }) => {
             animate={{ y: isHovered ? -10 : 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <h3 className="text-2xl md:text-3xl font-medium text-white ">
+            <h3 className="text-2xl md:text-3xl font-medium text-white">
               {project.title}
             </h3>
           </motion.div>
@@ -217,6 +202,18 @@ const ProjectCard = ({ project, index, isInView }) => {
 const StatsCard = ({ isInView }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [count, setCount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint is 768px
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Counting animation
   useEffect(() => {
@@ -243,13 +240,13 @@ const StatsCard = ({ isInView }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: 0.3 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
-      className="relative overflow-hidden group cursor-pointer bg-primary h-[450px] sm:h-[500px] md:h-[550px] lg:h-[600px] flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
+      className="relative overflow-hidden group cursor-pointer bg-primary h-[300px] sm:h-[500px] md:h-[550px] lg:h-[400px] xl:h-[600px] flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
     >
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center">
@@ -258,17 +255,17 @@ const StatsCard = ({ isInView }) => {
           <motion.span
             className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-none tracking-tight"
             initial={{ scale: 0.8 }}
-            animate={isInView ? { scale: 1 } : {}}
+            animate={isInView ? { scale: 1 } : { scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             {count}
           </motion.span>
 
-          {/* Plus Icon - Spins and moves on hover */}
+          {/* Plus Icon - Spins and moves on hover - Less movement on mobile */}
           <motion.span
             animate={{
               rotate: isHovered ? 180 : 0,
-              x: isHovered ? -120 : 0,
+              x: isHovered ? (isMobile ? -80 : -120) : 0,
             }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-secondary text-4xl sm:text-5xl font-bold"
@@ -280,7 +277,7 @@ const StatsCard = ({ isInView }) => {
         {/* Text with underline */}
         <div className="mb-6 md:mb-8">
           <p className="text-white/60 text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-1">
-            <motion.span className="relative text-white inline-block group-hover:underline transition-all duration-500 ">
+            <motion.span className="relative text-white inline-block group-hover:underline transition-all duration-500">
               projects
             </motion.span>{" "}
             delivered
