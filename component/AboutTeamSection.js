@@ -1,25 +1,30 @@
 "use client";
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight, MapPin, Pin } from "lucide-react";
-import { useRef, useState } from "react";
+import { ArrowUpRight, MapPin } from "lucide-react";
+import { useRef } from "react";
 
 const imageMotion = {
   initial: { scale: 1.2 },
   whileInView: { scale: 1 },
   transition: { duration: 0.6, ease: "easeOut" },
-  viewport: { once: true, amount: 0.4 },
+  viewport: { once: false, amount: 0.3 },
 };
 
 export default function AboutTeamSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.05,
+    margin: "0px 0px -100px 0px",
+  });
+
   return (
     <section ref={ref} className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto text-primary overflow-hidden">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="mb-16 flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 text-primary"
         >
@@ -169,8 +174,6 @@ function CardText({ title, tag, description }) {
       <p className="text-sm md:text-base font-normal text-primary/64 tracking-tight max-w-xs text-right">
         {description}
       </p>
-
-      {/* Decorative arc */}
     </div>
   );
 }
