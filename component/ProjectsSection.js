@@ -59,7 +59,7 @@ const ProjectsSection = () => {
   return (
     <section
       ref={ref}
-      className="py-12 md:py-20 px-4 md:px-6 bg-white"
+      className="py-10 lg:py-20 px-4 md:px-6 bg-white"
       id="projects"
     >
       <div className="max-w-7xl mx-auto">

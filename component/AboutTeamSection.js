@@ -19,7 +19,7 @@ export default function AboutTeamSection() {
   });
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-white">
+    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto text-primary overflow-hidden">
         {/* Section Header */}
         <motion.div
@@ -30,11 +30,11 @@ export default function AboutTeamSection() {
         >
           <div className="min-w-30 lg:min-w-60">
             <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
-              <p className="text-secondary">002</p>
-              <p className="text-primary">Projects </p>
+              <p className="text-secondary">008</p>
+              <p className="text-primary">About us</p>
             </div>
           </div>
-          <h2 className="text-4xl md:text-7xl lg:text-8xl font-medium text-primary tracking-tight mb-6">
+          <h2 className="text-4xl md:text-7xl lg:text-8xl font-medium text-primary tracking-tight mb-2 lg:mb-6">
             We're{" "}
             <span className="text-secondary">/designers/, /strategists/, </span>
             and <span className="text-secondary">/developers/</span> helping

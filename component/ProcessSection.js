@@ -71,14 +71,14 @@ const ProcessSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-white overflow-hidden">
+    <section ref={ref} className="py-10 md:py-20 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-16 flex flex-col lg:flex-row justify-between gap-10 lg:gap-20"
+          className="mb-16 flex flex-col lg:flex-row justify-between gap-6 lg:gap-20"
         >
           <div className="min-w-60">
             <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
@@ -86,7 +86,7 @@ const ProcessSection = () => {
               <p className="text-primary font-medium">Process</p>
             </div>
           </div>
-          <h2 className="text-6xl md:text-8xl font-medium text-primary mb-6">
+          <h2 className="text-6xl md:text-8xl font-medium text-primary mb-2 lg:mb-6">
             Process.
           </h2>
           <p className="text-primary/60 text-sm md:text-base max-w-sm">

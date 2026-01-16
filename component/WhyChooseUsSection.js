@@ -27,13 +27,13 @@ import CommonImage from "./CommonImage";
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="py-20 px-6 bg-white mt-20">
+    <section className="py-10 lg:py-20 px-6 bg-white mt-20">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <SectionHeader />
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 mt-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mt-10 lg:mt-16">
           {/* Box 1 - Experience with scrolling cards */}
           <ExperienceBox />
 

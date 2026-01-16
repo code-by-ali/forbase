@@ -13,12 +13,12 @@ const HeroSection = ({ heroY, heroOpacity }) => {
       ref={heroRef}
       style={{ y: heroY, opacity: heroOpacity }}
       id="home"
-      className="relative bg-[#FBF8F3] min-h-screen flex flex-col items-center pt-20 pb-20 overflow-hidden"
+      className="relative bg-[#FBF8F3] min-h-screen flex flex-col items-center pt-20 pb-0 lg:pb-10 overflow-hidden"
     >
       <div className="absolute left-5/10 ">
         <CommonImage src={HeroGradientBG.src || HeroGradientBG} />
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col gap-12 items-start w-full mt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col gap-4 lg:gap-12 items-start w-full mt-20">
         {/* Title Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}

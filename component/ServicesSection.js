@@ -53,7 +53,7 @@ const ServicesSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-white">
+    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -69,7 +69,7 @@ const ServicesSection = () => {
             </div>
           </div>
 
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary mb-6">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary lg:mb-6">
             Services.
           </h2>
           <p className="text-primary/60 text-sm md:text-base max-w-sm">
@@ -122,10 +122,10 @@ const ServiceItem = ({ service, index, isOpen, toggleItem, isInView }) => {
       {/* Clickable Header */}
       <button
         onClick={() => toggleItem(service.id)}
-        className="w-full py-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-left hover:bg-gray-50/50 transition-colors px-4 -mx-4 rounded-lg outline-none"
+        className="w-full py-4 md:py-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-left hover:bg-gray-50/50 transition-colors px-4 -mx-4 rounded-lg outline-none"
       >
         {/* Left: Number and Content */}
-        <div className="flex-1 flex flex-col md:flex-row items-start gap-6">
+        <div className="flex-1 flex flex-col md:flex-row items-start gap-2 md:gap-6">
           {/* Animated Number Block */}
           <motion.div
             className="relative text-lg md:text-xl text-primary font-medium mt-1 min-w-15"
