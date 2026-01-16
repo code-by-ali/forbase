@@ -2,12 +2,17 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { useRef } from "react";
+import TeamMember1 from "@/public/about-team-member-1.svg";
+import TeamMember2 from "@/public/about-team-member-2.svg";
+import TeamMember3 from "@/public/about-team-member-3.svg";
+import TeamMember4 from "@/public/about-team-member-4.svg";
+import CommonImage from "./CommonImage";
 
 const imageMotion = {
-  initial: { scale: 1.1 },
+  initial: { scale: 1.05 },
   whileInView: { scale: 1 },
   transition: { duration: 0.4, ease: "easeOut" },
-  viewport: { once: false, amount: 0.3 },
+  viewport: { once: true, amount: 0.3 },
 };
 
 export default function AboutTeamSection() {
@@ -45,7 +50,7 @@ export default function AboutTeamSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-0">
           {/* 1️⃣ Image */}
           <CardImage
-            src="https://framerusercontent.com/images/zBc3VzyFnZQObGBbMpJ8wY6Q.png"
+            src={TeamMember1}
             name="Amelia Hyeon"
             role="Brand Strategist"
           />
@@ -59,7 +64,7 @@ export default function AboutTeamSection() {
 
           {/* 3️⃣ Image */}
           <CardImage
-            src="https://framerusercontent.com/images/zBc3VzyFnZQObGBbMpJ8wY6Q.png"
+            src={TeamMember2}
             name="Oliver Bennett"
             role="Product Designer"
           />
@@ -80,7 +85,7 @@ export default function AboutTeamSection() {
 
           {/* 6️⃣ Image */}
           <CardImage
-            src="https://framerusercontent.com/images/zBc3VzyFnZQObGBbMpJ8wY6Q.png"
+            src={TeamMember3}
             name="Ava Morgan"
             role="Client Success Manager"
           />
@@ -94,7 +99,7 @@ export default function AboutTeamSection() {
 
           {/* 8️⃣ Image */}
           <CardImage
-            src="https://framerusercontent.com/images/zBc3VzyFnZQObGBbMpJ8wY6Q.png"
+            src={TeamMember4}
             name="Elliot Kim"
             role="Lead Developer"
           />
@@ -130,16 +135,17 @@ export default function AboutTeamSection() {
 
 function CardImage({ src, name, role }) {
   return (
-    <div className="bg-white">
+    <div className="bg-[#FBF8F3]">
       <motion.div {...imageMotion} className="relative overflow-hidden">
-        <img
-          src={src}
+        <CommonImage
+          src={src.src || src}
           alt={name}
           width={400}
           height={500}
-          className="h-100 w-full object-cover"
+          className="w-full h-full"
+          style={{ objectFit: "cover" }}
         />
-        <p className="absolute top-2 left-2 flex items-center gap-2 backdrop-blur-2xl bg-white/20 text-white rounded-full px-3 py-1">
+        <p className="absolute top-4 left-6 flex items-center gap-2 backdrop-blur-2xl bg-white/20 text-white rounded-full px-3 py-1">
           <MapPin size={16} />
           New York, US
         </p>
