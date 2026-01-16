@@ -149,7 +149,7 @@ const ExperienceBox = () => {
           {[...projects, ...projects, ...projects].map((project, i) => (
             <motion.div
               key={i}
-              className="relative w-48 h-32 rounded-xl overflow-hidden flex-shrink-0"
+              className="relative w-48 h-32 rounded-xl overflow-hidden shrink-0"
               whileHover={{ filter: "grayscale(100%)" }}
               transition={{ duration: 0.3 }}
             >
@@ -204,7 +204,7 @@ const SatisfactionBox = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.1 }}
-      className="bg-linear-to-br from-[#e7b1a9] to-[#F44930] p-8 text-white relative overflow-hidden min-h-[22rem] md:min-h-[28rem]"
+      className="bg-linear-to-br from-[#e7b1a9] to-[#F44930] p-8 text-white relative overflow-hidden min-h-88 md:min-h-112"
     >
       <CommonImage
         src={SatisfactionCardImg.src || SatisfactionCardImg}
@@ -263,7 +263,7 @@ const FlexiblePricingBox = () => {
       initial={{ opacity: 0, scale: 1.1 }}
       animate={isInView ? { opacity: 1, scale: 1 } : {}}
       transition={{ duration: 0.8 }}
-      className="bg-white overflow-hidden lg:row-span-2 relative min-h-[22rem] md:min-h-[28rem] lg:min-h-[36rem]"
+      className="bg-white overflow-hidden lg:row-span-2 relative min-h-88 md:min-h-112 lg:min-h-144"
     >
       <motion.img
         src={FlexibleCardImg.src || FlexibleCardImg}
@@ -356,7 +356,7 @@ const ScalableDesignBox = () => {
   return (
     <motion.div
       ref={ref}
-      className="bg-white p-8 flex flex-col items-center justify-center gap-2 border border-t-0 border-primary/10 order-1 lg:order-none"
+      className="bg-white p-8 flex flex-col items-center justify-center gap-2 border border-t-0 border-primary/10 order-1 lg:order-0"
     >
       <div className="w-full mb-auto flex items-center justify-between">
         <CommonImage src={L3Icon.src || L3Icon} />
@@ -424,7 +424,7 @@ const RealtimeSupportBox = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-white p-8 lg:row-span-2 flex flex-col justify-between order-2 lg:order-none"
+      className="bg-white p-8 lg:row-span-2 flex flex-col justify-between order-2 lg:order-0"
     >
       <div>
         <h3 className="text-3xl md:text-4xl font-medium text-primary mb-2">

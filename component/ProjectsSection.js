@@ -120,7 +120,7 @@ const ProjectCard = ({ project, index, isInView }) => {
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
-      className="relative overflow-hidden cursor-pointer group h-[240px] sm:h-[500px] md:h-[550px] lg:h-[400px] xl:h-[600px]"
+      className="relative overflow-hidden cursor-pointer group h-60 sm:h-125 md:h-138 lg:h-100 xl:h-150"
     >
       {/* Background Image with Zoom */}
       <motion.div
@@ -133,7 +133,7 @@ const ProjectCard = ({ project, index, isInView }) => {
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/20 via-transparent to-black/60 pointer-events-none" />
 
       {/* Content Overlay */}
       <div className="relative z-10 h-full flex flex-col justify-between p-4 sm:p-6 md:p-8">
@@ -246,7 +246,7 @@ const StatsCard = ({ isInView }) => {
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
-      className="relative overflow-hidden group cursor-pointer bg-primary h-[300px] sm:h-[500px] md:h-[550px] lg:h-[400px] xl:h-[600px] flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
+      className="relative overflow-hidden group cursor-pointer bg-primary h-75 sm:h-125 md:h-128 lg:h-100 xl:h-150 flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
     >
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center">
