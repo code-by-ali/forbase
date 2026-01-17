@@ -14,6 +14,8 @@ import ServicesSection from "@/component/ServicesSection";
 import "./globals.css";
 import TestimonialsSection from "@/component/TestimonialsSection";
 import AboutTeamSection from "@/component/AboutTeamSection";
+import BlogSection from "@/component/BlogSection";
+import FAQSection from "@/component/FAQSection";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,9 +36,9 @@ export default function Home() {
       <ProcessSection />
       <TestimonialsSection />
       <AboutTeamSection />
-      {/* <BlogSection />
+      <BlogSection />
       <FAQSection />
-      <MarqueeLogoSection />
+      {/* <MarqueeLogoSection />
       <ContactSection />
       <Footer /> */}
 
