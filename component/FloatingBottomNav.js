@@ -26,7 +26,7 @@ const FloatingBottomNav = () => {
       transition={{ duration: 0.3, delay: 0.2 }}
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
     >
-      <div className="bg-black backdrop-blur-sm shadow-2xl px-4 py-3 flex items-center justify-around">
+      <div className="bg-[#FBF8F3] backdrop-blur-sm shadow-2xl px-4 py-3 flex items-center justify-around">
         {navItems.map((item, index) => (
           <motion.button
             key={item.label}
