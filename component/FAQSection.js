@@ -133,7 +133,7 @@ const FAQItem = ({ faq, index, isOpen, toggleItem, isInView }) => {
       {/* Clickable Header */}
       <button
         onClick={() => toggleItem(faq.id)}
-        className="outline-none w-full py-6 flex items-start justify-between gap-6 text-left hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg"
+        className="outline-none w-full py-6 flex flex-col md:flex-row md:items-start md:justify-between gap-6 text-left hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-lg"
       >
         {/* Left: Number and Question */}
         <div className="flex-1 flex items-start gap-6">
@@ -186,7 +186,7 @@ const FAQItem = ({ faq, index, isOpen, toggleItem, isInView }) => {
 
         {/* Right: Plus/Minus Toggle */}
         <motion.div
-          className="shrink-0 mt-1"
+          className="ml-auto md:shrink-0 mt-1"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
