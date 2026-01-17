@@ -6,20 +6,37 @@ import { ArrowUpRight } from "lucide-react";
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Check if scrolled past 50px
+      setScrolled(currentScrollY > 50);
+
+      // Show/hide based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past 100px - hide nav
+        setVisible(false);
+      } else {
+        // Scrolling up or at top - show nav
+        setVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      animate={{ y: visible ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/10 backdrop-blur-sm shadow-lg py-4"

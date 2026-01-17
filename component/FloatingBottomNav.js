@@ -24,9 +24,9 @@ const FloatingBottomNav = () => {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.2 }}
-      className="fixed bottom-2 left-1/2 -translate-x-1/2 z-50 md:hidden"
+      className="fixed bottom-0 left-0 right-0 z-50 md:hidden"
     >
-      <div className="bg-transparent backdrop-blur-sm shadow-2xl rounded-full px-6 py-0 flex items-center gap-2">
+      <div className="bg-black backdrop-blur-sm shadow-2xl px-4 py-3 flex items-center justify-around">
         {navItems.map((item, index) => (
           <motion.button
             key={item.label}
@@ -39,7 +39,7 @@ const FloatingBottomNav = () => {
             className="flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-full group"
           >
             <item.icon className="w-5 h-5 text-secondary" />
-            <span className="text-[10px] font-medium text-secondary ">
+            <span className="text-[10px] font-medium text-secondary">
               {item.label}
             </span>
           </motion.button>

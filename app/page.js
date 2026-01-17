@@ -37,7 +37,7 @@ export default function Home() {
       <TestimonialsSection />
       <AboutTeamSection />
       <BlogSection />
-      <FAQSection />
+      {/* <FAQSection /> */}
       {/* <MarqueeLogoSection />
       <ContactSection />
       <Footer /> */}
