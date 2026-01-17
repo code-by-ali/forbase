@@ -19,17 +19,11 @@ import FAQSection from "@/component/FAQSection";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { scrollY } = useScroll();
-
-  // Parallax effect for hero section
-  const heroY = useTransform(scrollY, [0, 500], [0, 50]);
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 1]);
-
   return (
     <main className="bg-white">
       <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <FloatingBottomNav />
-      <HeroSection heroY={heroY} heroOpacity={heroOpacity} />
+      <HeroSection />
       <WhyChooseUsSection />
       <ProjectsSection />
       <ServicesSection />

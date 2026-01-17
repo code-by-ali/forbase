@@ -5,13 +5,12 @@ import HeroGradientBG from "@/public/hero-bg.svg";
 import HeroMainImg from "@/public/hero-main.svg";
 import CommonImage from "./CommonImage";
 
-const HeroSection = ({ heroY, heroOpacity }) => {
+const HeroSection = () => {
   const heroRef = useRef(null);
 
   return (
     <motion.section
       ref={heroRef}
-      style={{ y: heroY, opacity: heroOpacity }}
       id="home"
       className="relative bg-[#FBF8F3] min-h-screen flex flex-col items-center pt-20 pb-0 lg:pb-10 overflow-hidden"
     >
