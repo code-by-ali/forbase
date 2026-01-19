@@ -24,7 +24,7 @@ export default function AboutTeamSection() {
   });
 
   return (
-    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white">
+    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white" id="about">
       <div className="max-w-7xl mx-auto text-primary overflow-hidden">
         {/* Section Header */}
         <motion.div

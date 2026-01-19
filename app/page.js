@@ -16,6 +16,9 @@ import TestimonialsSection from "@/component/TestimonialsSection";
 import AboutTeamSection from "@/component/AboutTeamSection";
 import BlogSection from "@/component/BlogSection";
 import FAQSection from "@/component/FAQSection";
+import MarqueeLogoSection from "@/component/MarqueeLogoSection";
+import ContactSection from "@/component/ContactSection";
+import Footer from "@/component/Footer";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,11 +35,9 @@ export default function Home() {
       <AboutTeamSection />
       <BlogSection />
       <FAQSection />
-      {/* <MarqueeLogoSection />
+      <MarqueeLogoSection />
       <ContactSection />
-      <Footer /> */}
-
-      {/* More sections coming soon */}
+      <Footer />
     </main>
   );
 }
