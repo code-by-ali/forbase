@@ -108,7 +108,7 @@ const Footer = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="mb-10 sm:mb-12 md:mb-16 overflow-hidden"
         >
-          <h3 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[12rem] xl:text-[15rem] font-bold leading-none tracking-tight wrap-break-word">
+          <h3 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[12rem] xl:text-[15rem] font-bold leading-none tracking-tight break-words">
             Forbase
             <span className="text-secondary text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[17rem] leading-none">
               .
@@ -121,7 +121,7 @@ const Footer = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-white/10 mb-10 md:mb-0"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-white/10"
         >
           {/* Copyright */}
           <div className="text-white/60 text-xs sm:text-sm">
@@ -155,9 +155,18 @@ const Footer = () => {
 const FooterLink = ({ href, text }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <a
       href={href}
+      onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white relative group"
