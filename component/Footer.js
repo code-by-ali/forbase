@@ -108,7 +108,7 @@ const Footer = () => {
           transition={{ duration: 1, delay: 0.5 }}
           className="mb-10 sm:mb-12 md:mb-16 overflow-hidden"
         >
-          <h3 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[12rem] xl:text-[15rem] font-bold leading-none tracking-tight break-words">
+          <h3 className="text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[12rem] xl:text-[15rem] font-bold leading-none tracking-tight wrap-break-word">
             Forbase
             <span className="text-secondary text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[14rem] xl:text-[17rem] leading-none">
               .
