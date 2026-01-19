@@ -206,14 +206,6 @@ const ContactSection = () => {
                   className="w-full px-0 py-2 sm:py-3 bg-transparent border-b-2 border-primary/30 focus:border-secondary outline-none text-primary text-sm sm:text-base transition-colors resize-none"
                   whileFocus={{ scale: 1.005 }}
                 />
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{
-                    scaleX: focusedField === "message" ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary origin-left"
-                />
               </div>
 
               {/* Submit Button */}
