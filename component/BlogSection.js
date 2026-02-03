@@ -71,7 +71,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-[#FBF8F3]" id="blog">
+    <section ref={ref} className="py-20 px-6 bg-background" id="blog">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -223,7 +223,7 @@ const StaticBrandCard = ({ post, index, isInView }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-[#FBF8F3] py-6 px-6 md:py-8 md:px-8 flex flex-col items-center justify-between text-center h-110 md:h-120 lg:h-135"
+      className="bg-background py-6 px-6 md:py-8 md:px-8 flex flex-col items-center justify-between text-center h-110 md:h-120 lg:h-135"
     >
       <h3 className="w-full text-4xl md:text-5xl lg:text-6xl font-normal text-primary tracking-tighter text-right">
         FORBASE <sup>® </sup>
@@ -244,7 +244,7 @@ const StaticIconCard = ({ post, index, isInView }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white p-8 md:p-12 flex flex-col items-center justify-center text-center h-110 md:h-120 lg:h-135"
+      className="bg-background p-8 md:p-12 flex flex-col items-center justify-center text-center h-110 md:h-120 lg:h-135"
     >
       <div className="text-primary">
         <Globe size={150} strokeWidth={1} className="md:w-50 md:h-50" />
@@ -259,7 +259,7 @@ const StaticLatestNewsCard = ({ post, index, isInView }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white py-6 px-6 md:py-8 md:px-8 flex flex-col items-center justify-between text-center h-110 md:h-120 lg:h-135"
+      className="bg-background py-6 px-6 md:py-8 md:px-8 flex flex-col items-center justify-between text-center h-110 md:h-120 lg:h-135"
     >
       <h3 className="w-full text-3xl md:text-4xl lg:text-5xl font-normal text-primary text-left leading-tight">
         Latest <span className="text-primary/60">news</span> &

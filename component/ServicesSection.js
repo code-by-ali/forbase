@@ -1,10 +1,12 @@
 import React, { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Plus, Minus } from "lucide-react";
+import { easeOut, viewportOnce } from "@/lib/animationVariants";
+import SectionLabel from "./SectionLabel";
 
 const ServicesSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const isInView = useInView(ref, viewportOnce);
   const [openItems, setOpenItems] = useState([]);
 
   const services = [
@@ -53,29 +55,18 @@ const ServicesSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white">
+    <section ref={ref} className="py-10 lg:py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 28 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7, ease: easeOut }}
           className="mb-16 flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-20"
         >
-          <div className="min-w-30 lg:min-w-60">
-            <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
-              <p className="text-secondary">003</p>
-              <p className="text-primary">Services </p>
-            </div>
-          </div>
-
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary lg:mb-6">
-            Services.
-          </h2>
-          <p className="text-primary/60 text-sm md:text-base max-w-sm">
-            Explore how our design solutions shape strong brands, create
-            engaging experiences, and deliver lasting impact across industries.
-          </p>
+          <SectionLabel number="003" label="Services" />
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary lg:mb-6">Services.</h2>
+          <p className="text-primary/60 text-sm md:text-base max-w-sm">Explore how our design solutions shape strong brands, create engaging experiences, and deliver lasting impact across industries.</p>
         </motion.div>
 
         {/* Services List */}
@@ -102,9 +93,9 @@ const ServiceItem = ({ service, index, isOpen, toggleItem, isInView }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.08, ease: easeOut }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="relative border-b border-primary/10 last:border-b-0 overflow-hidden"
@@ -115,7 +106,7 @@ const ServiceItem = ({ service, index, isOpen, toggleItem, isInView }) => {
         className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary/60 z-10"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: isHovered || isOpen ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={{ duration: 0.4, ease: easeOut }}
         style={{ originX: 0 }}
       />
 
@@ -141,7 +132,7 @@ const ServiceItem = ({ service, index, isOpen, toggleItem, isInView }) => {
               animate={{
                 x: isOpen ? -10 : 40, // Adjust these based on your font-size
               }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: easeOut }}
               className="absolute left-0 text-secondary font-bold"
             >
               /

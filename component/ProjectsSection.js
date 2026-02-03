@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { easeOut, viewportOnce } from "@/lib/animationVariants";
+import SectionLabel from "./SectionLabel";
 import ProjectCard1 from "@/public/projects-card-img-1.svg";
 import ProjectCard2 from "@/public/projects-card-img-2.svg";
 import ProjectCard3 from "@/public/projects-card-img-3.svg";
@@ -11,11 +13,7 @@ import CommonImage from "./CommonImage";
 
 const ProjectsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: false,
-    amount: 0.05,
-    margin: "0px 0px -100px 0px",
-  });
+  const isInView = useInView(ref, viewportOnce);
 
   const projects = [
     {
@@ -59,32 +57,20 @@ const ProjectsSection = () => {
   return (
     <section
       ref={ref}
-      className="py-10 lg:py-20 px-4 md:px-6 bg-white"
+      className="py-10 lg:py-20 px-4 md:px-6 bg-background"
       id="projects"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 28 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          transition={{ duration: 0.7, ease: easeOut }}
           className="mb-12 lg:mb-16 flex flex-col lg:flex-row lg:justify-between gap-4 lg:gap-20"
         >
-          <div className="min-w-30 md:min-w-60">
-            <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
-              <p className="text-secondary">002</p>
-              <p className="text-primary">Projects </p>
-            </div>
-          </div>
-
-          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-primary lg:mb-4">
-            Projects.
-          </h2>
-          <p className="text-primary/60 text-sm md:text-base max-w-sm">
-            Real creativity. Tangible results. Discover how we've elevated
-            brands like yours through thoughtful design and seamless
-            development.
-          </p>
+          <SectionLabel number="002" label="Projects" className="min-w-30 md:min-w-60" />
+          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-primary lg:mb-4">Projects.</h2>
+          <p className="text-primary/60 text-sm md:text-base max-w-sm">Real creativity. Tangible results. Discover how we've elevated brands like yours through thoughtful design and seamless development.</p>
         </motion.div>
 
         {/* Projects Grid */}
@@ -113,9 +99,9 @@ const ProjectCard = ({ project, index, isInView }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 36 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
+      transition={{ duration: 0.65, delay: index * 0.08, ease: easeOut }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
@@ -125,7 +111,7 @@ const ProjectCard = ({ project, index, isInView }) => {
       {/* Background Image with Zoom */}
       <motion.div
         animate={{ scale: isHovered ? 1.1 : 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: easeOut }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(projects-card-img-${index + 1}.svg)`,
@@ -169,7 +155,7 @@ const ProjectCard = ({ project, index, isInView }) => {
         <div className="space-y-2">
           <motion.div
             animate={{ y: isHovered ? -10 : 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: easeOut }}
           >
             <h3 className="text-2xl md:text-3xl font-medium text-white">
               {project.title}
@@ -184,7 +170,7 @@ const ProjectCard = ({ project, index, isInView }) => {
               height: isHovered ? "auto" : 0,
               y: isHovered ? 0 : 20,
             }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: easeOut }}
             className="overflow-hidden"
           >
             <div className="h-px bg-white/30 mb-2" />
@@ -239,21 +225,21 @@ const StatsCard = ({ isInView }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
+      initial={{ opacity: 0, y: 36 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
+      transition={{ duration: 0.65, delay: 0.2, ease: easeOut }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
-      className="relative overflow-hidden group cursor-pointer bg-primary h-75 sm:h-125 md:h-128 lg:h-100 xl:h-150 flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
+      className="relative overflow-hidden group cursor-pointer bg-background border border-primary/10 h-75 sm:h-125 md:h-128 lg:h-100 xl:h-150 flex flex-col justify-between px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10"
     >
       {/* Main Content */}
       <div className="flex-1 flex flex-col justify-center">
         {/* Number with Plus Icon */}
         <div className="flex items-start mb-4 md:mb-6">
           <motion.span
-            className="text-5xl sm:text-6xl md:text-7xl font-bold text-white leading-none tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold text-primary leading-none tracking-tight"
             initial={{ scale: 0.8 }}
             animate={isInView ? { scale: 1 } : { scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -276,15 +262,15 @@ const StatsCard = ({ isInView }) => {
 
         {/* Text with underline */}
         <div className="mb-6 md:mb-8">
-          <p className="text-white/60 text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-1">
-            <motion.span className="relative text-white inline-block group-hover:underline transition-all duration-500">
+          <p className="text-primary/60 text-xl sm:text-2xl md:text-3xl font-medium tracking-tight mb-1">
+            <motion.span className="relative text-primary inline-block group-hover:underline transition-all duration-500">
               projects
             </motion.span>{" "}
             delivered
           </p>
-          <p className="text-white/60 text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">
+          <p className="text-primary/60 text-xl sm:text-2xl md:text-3xl font-medium tracking-tight">
             with excellence across{" "}
-            <span className="text-white">multiple industries</span>.
+            <span className="text-primary">multiple industries</span>.
           </p>
         </div>
       </div>
