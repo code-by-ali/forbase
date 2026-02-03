@@ -31,7 +31,7 @@ const ContactSection = () => {
   return (
     <section
       ref={ref}
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-[#FBF8F3] overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-background overflow-hidden"
       id="contact"
     >
       <div className="max-w-7xl mx-auto">

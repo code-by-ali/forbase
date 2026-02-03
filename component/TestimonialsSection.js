@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Quote } from "lucide-react";
+import { easeOut, viewportOnce } from "@/lib/animationVariants";
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: false, // Changed from true to false
-    amount: 0.05, // Very low threshold - triggers when just 5% is visible
-    margin: "0px 0px -100px 0px", // Start animation before element enters viewport
-  });
+  const isInView = useInView(ref, viewportOnce);
 
   const testimonials = [
     {
@@ -77,7 +74,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-20 px-6 bg-white">
+    <section ref={ref} className="py-20 px-6 bg-background">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16 flex flex-col lg:flex-row justify-between gap-4 lg:gap-20">
@@ -201,7 +198,7 @@ const TestimonialCard1 = ({ testimonial, index, isInView }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="p-8 bg-white flex flex-col gap-6 border border-primary/10"
+      className="p-8 bg-background flex flex-col gap-6 border border-primary/10"
     >
       <div>
         {/* Quote Icon */}
@@ -396,7 +393,7 @@ const StatCard = ({ value, suffix, label, isInView, delay, decimals = 0 }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.8, delay }}
-      className="bg-white p-6 min-h-60 flex flex-col justify-between items-start border border-primary/10"
+      className="bg-background p-6 min-h-60 flex flex-col justify-between items-start border border-primary/10"
     >
       <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary">
         {decimals > 0 ? count.toFixed(decimals) : count}
@@ -417,7 +414,7 @@ const ForbaseCard = ({ isInView }) => {
       transition={{ duration: 0.8, delay: 0.3 }}
       className="flex flex-col justify-between border border-primary/10 p-2"
     >
-      <div className="h-full text-primary bg-white flex flex-col gap-2">
+      <div className="h-full text-primary bg-background flex flex-col gap-2">
         <h3 className="text-3xl md:text-4xl text-primary font-normal">
           FORBASE<sup>®</sup>
         </h3>

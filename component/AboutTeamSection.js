@@ -2,6 +2,8 @@
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { useRef } from "react";
+import { easeOut, viewportOnce } from "@/lib/animationVariants";
+import SectionLabel from "./SectionLabel";
 import TeamMember1 from "@/public/about-team-member-1.svg";
 import TeamMember2 from "@/public/about-team-member-2.svg";
 import TeamMember3 from "@/public/about-team-member-3.svg";
@@ -17,28 +19,19 @@ const imageMotion = {
 
 export default function AboutTeamSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: false,
-    amount: 0.05,
-    margin: "0px 0px -100px 0px",
-  });
+  const isInView = useInView(ref, viewportOnce);
 
   return (
-    <section ref={ref} className="py-10 lg:py-20 px-6 bg-white" id="about">
+    <section ref={ref} className="py-10 lg:py-20 px-6 bg-background" id="about">
       <div className="max-w-7xl mx-auto text-primary overflow-hidden">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: easeOut }}
           className="mb-16 flex flex-col lg:flex-row lg:justify-between gap-8 lg:gap-12 text-primary"
         >
-          <div className="min-w-30 lg:min-w-60">
-            <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
-              <p className="text-secondary">008</p>
-              <p className="text-primary">About us</p>
-            </div>
-          </div>
+          <SectionLabel number="008" label="About us" />
           <h2 className="text-4xl md:text-7xl lg:text-8xl font-medium text-primary tracking-tight mb-2 lg:mb-6">
             We're{" "}
             <span className="text-secondary">/designers/, /strategists/, </span>
@@ -135,7 +128,7 @@ export default function AboutTeamSection() {
 
 function CardImage({ src, name, role }) {
   return (
-    <div className="bg-[#FBF8F3]">
+    <div className="bg-background">
       <motion.div {...imageMotion} className="relative overflow-hidden">
         <CommonImage
           src={src.src || src}
@@ -166,7 +159,7 @@ function CardImage({ src, name, role }) {
 
 function CardText({ title, tag, description }) {
   return (
-    <div className="relative bg-[#FBF8F3] min-h-100 p-8 flex flex-col justify-between border border-primary/10">
+    <div className="relative bg-background min-h-100 p-8 flex flex-col justify-between border border-primary/10">
       <div className="flex flex-col gap-4">
         <p className="text-sm md:text-base font-normal text-primary/64 text-right">
           {tag} <span className="text-secondary">//</span>

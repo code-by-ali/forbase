@@ -1,13 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { animate, motion, useInView } from "framer-motion";
-import {
-  ArrowUpRight,
-  Clock,
-  ClockFading,
-  Layers,
-  Rocket,
-  Star,
-} from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { easeOut, viewportOnce } from "@/lib/animationVariants";
+import SectionLabel from "./SectionLabel";
+import { ArrowUpRight, ClockFading, Rocket, Star } from "lucide-react";
 import CardImg1 from "@/public/why-us-card-img-1.svg";
 import CardImg2 from "@/public/why-us-card-img-2.svg";
 import CardImg3 from "@/public/why-us-card-img-3.svg";
@@ -27,7 +22,7 @@ import CommonImage from "./CommonImage";
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="py-10 lg:py-20 px-6 bg-white mt-20">
+    <section className="py-10 lg:py-20 px-6 bg-background mt-20">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <SectionHeader />
@@ -60,22 +55,17 @@ const WhyChooseUsSection = () => {
 // Section Header Component
 const SectionHeader = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const isInView = useInView(ref, viewportOnce);
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.7, ease: easeOut }}
       className="flex flex-col md:flex-row items-start gap-8 px-0 md:px-8"
     >
-      <div className="min-w-30 lg:min-w-80">
-        <div className="text-sm border-l-2 border-secondary p-2 flex flex-col gap-2">
-          <p className="text-secondary">001</p>
-          <p className="text-primary">Why choose us </p>
-        </div>
-      </div>
+      <SectionLabel number="001" label="Why choose us" />
       <div className="max-w-3xl">
         <h2 className="text-5xl md:text-7xl lg:text-8xl font-medium text-primary mb-6">
           Our <span className="text-primary/40">advantage.</span>
@@ -116,10 +106,10 @@ const ExperienceBox = () => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 36 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6 }}
-      className="bg-white rounded-3xl p-8 lg:col-span-2"
+      transition={{ duration: 0.65, ease: easeOut }}
+      className="bg-background rounded-3xl p-8 lg:col-span-2 border border-primary/5"
     >
       <h3 className="text-2xl md:text-3xl font-medium text-primary mb-2">
         8 years of experience
@@ -201,9 +191,9 @@ const SatisfactionBox = () => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 36 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.1 }}
+      transition={{ duration: 0.65, delay: 0.08, ease: easeOut }}
       className="bg-linear-to-br from-[#e7b1a9] to-[#F44930] p-8 text-white relative overflow-hidden min-h-88 md:min-h-112"
     >
       <CommonImage
@@ -217,9 +207,9 @@ const SatisfactionBox = () => {
         </p>
         <motion.div
           className="text-7xl tracking-tighter font-bold mb-2"
-          initial={{ scale: 0.8 }}
-          animate={isInView ? { scale: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.25, ease: easeOut }}
         >
           {count}%
         </motion.div>
@@ -233,9 +223,9 @@ const SatisfactionBox = () => {
             {[...Array(5)].map((_, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0 }}
+                initial={{ opacity: 0, scale: 0.6 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 1 + i * 0.1 }}
+                transition={{ duration: 0.4, delay: 0.8 + i * 0.06, ease: easeOut }}
               >
                 <Star className="fill-white text-white w-3 h-3" />
               </motion.div>
@@ -260,25 +250,25 @@ const FlexiblePricingBox = () => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 1.1 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.8 }}
-      className="bg-white overflow-hidden lg:row-span-2 relative min-h-88 md:min-h-112 lg:min-h-144"
+      initial={{ opacity: 0, y: 32 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.75, ease: easeOut }}
+      className="bg-background overflow-hidden lg:row-span-2 relative min-h-88 md:min-h-112 lg:min-h-144 border border-primary/5 rounded-3xl"
     >
       <motion.img
         src={FlexibleCardImg.src || FlexibleCardImg}
         alt="Flexible pricing"
         className="w-full h-full object-cover"
-        initial={{ scale: 1.2 }}
+        initial={{ scale: 1.08 }}
         animate={isInView ? { scale: 1 } : {}}
-        transition={{ duration: 1.2 }}
+        transition={{ duration: 1, ease: easeOut }}
       />
 
       <motion.div
         className="absolute inset-0 bg-linear-to-t from-black/40 via-black/20 to-transparent flex flex-col justify-between p-8"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.3 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: easeOut }}
       >
         <div className="text-white text-sm font-medium tracking-tight flex items-center justify-start">
           <span className="text-lg text-secondary">*</span> Plans start from
@@ -311,30 +301,30 @@ const FastTurnaroundBox = () => {
   return (
     <motion.div
       ref={ref}
-      className="bg-white p-8 flex flex-col items-center justify-center gap-2 border border-primary/10"
+      className="bg-background p-8 flex flex-col items-center justify-center gap-2 border border-primary/10"
     >
       <div className="flex flex-col items-center justify-center gap-2 mt-auto">
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: easeOut }}
           className="flex items-center gap-4"
         >
           <ClockFading className="text-secondary" size={28} />
         </motion.div>
         <motion.h3
           className="text-2xl md:text-3xl font-medium text-primary mb-2"
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.06, ease: easeOut }}
         >
           Fast turnaround
         </motion.h3>
         <motion.p
           className="text-primary/60 text-lg md:text-xl font-medium tracking-tight text-center"
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.12, ease: easeOut }}
         >
           Projects launched in as little as 2 weeks.
         </motion.p>
@@ -356,7 +346,7 @@ const ScalableDesignBox = () => {
   return (
     <motion.div
       ref={ref}
-      className="bg-white p-8 flex flex-col items-center justify-center gap-2 border border-t-0 border-primary/10 order-1 lg:order-0"
+      className="bg-background p-8 flex flex-col items-center justify-center gap-2 border border-t-0 border-primary/10 order-1 lg:order-0"
     >
       <div className="w-full mb-auto flex items-center justify-between">
         <CommonImage src={L3Icon.src || L3Icon} />
@@ -365,26 +355,26 @@ const ScalableDesignBox = () => {
 
       <div className="flex flex-col items-center justify-center gap-2 mb-auto">
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: easeOut }}
           className="flex items-center gap-4"
         >
           <Rocket className="text-secondary" size={28} />
         </motion.div>
         <motion.h3
           className="text-2xl md:text-3xl font-medium text-primary mb-2"
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.06, ease: easeOut }}
         >
           Scalable design
         </motion.h3>
         <motion.p
           className="text-primary/60 text-lg md:text-xl font-medium tracking-tight text-center"
-          initial={{ opacity: 0, x: 30 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.12, ease: easeOut }}
         >
           Design systems that scale with your product.
         </motion.p>
@@ -421,10 +411,10 @@ const RealtimeSupportBox = () => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 36 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="bg-white p-8 lg:row-span-2 flex flex-col justify-between order-2 lg:order-0"
+      transition={{ duration: 0.65, delay: 0.12, ease: easeOut }}
+      className="bg-background p-8 lg:row-span-2 flex flex-col justify-between order-2 lg:order-0 border border-primary/5 rounded-3xl"
     >
       <div>
         <h3 className="text-3xl md:text-4xl font-medium text-primary mb-2">
@@ -442,9 +432,9 @@ const RealtimeSupportBox = () => {
         {messages.map((message, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: message.delay }}
+            transition={{ duration: 0.5, delay: message.delay, ease: easeOut }}
             className={`flex ${
               message.type === "support" ? "justify-end" : "justify-start"
             }`}

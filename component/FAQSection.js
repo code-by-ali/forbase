@@ -63,7 +63,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 md:py-40 px-6 bg-white overflow-hidden">
+    <section ref={ref} className="py-20 md:py-40 px-6 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-5 gap-8 md:gap-16">
           {/* Left Column - FAQ Header */}

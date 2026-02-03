@@ -1,17 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { useScroll, useTransform } from "framer-motion";
-
+import React from "react";
+import "./globals.css";
 import Navigation from "@/component/Navigation";
 import FloatingBottomNav from "@/component/FloatingBottomNav";
 import HeroSection from "@/component/HeroSection";
 import WhyChooseUsSection from "@/component/WhyChooseUsSection";
 import ProjectsSection from "@/component/ProjectsSection";
-import ProcessSection from "@/component/ProcessSection";
 import ServicesSection from "@/component/ServicesSection";
-
-import "./globals.css";
+import ProcessSection from "@/component/ProcessSection";
 import TestimonialsSection from "@/component/TestimonialsSection";
 import AboutTeamSection from "@/component/AboutTeamSection";
 import BlogSection from "@/component/BlogSection";
@@ -20,24 +17,29 @@ import MarqueeLogoSection from "@/component/MarqueeLogoSection";
 import ContactSection from "@/component/ContactSection";
 import Footer from "@/component/Footer";
 
+const SECTIONS = [
+  HeroSection,
+  WhyChooseUsSection,
+  ProjectsSection,
+  ServicesSection,
+  ProcessSection,
+  TestimonialsSection,
+  AboutTeamSection,
+  BlogSection,
+  FAQSection,
+  MarqueeLogoSection,
+  ContactSection,
+  Footer,
+];
+
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <main className="bg-white">
-      <Navigation isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+    <main className="bg-background">
+      <Navigation />
       <FloatingBottomNav />
-      <HeroSection />
-      <WhyChooseUsSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <ProcessSection />
-      <TestimonialsSection />
-      <AboutTeamSection />
-      <BlogSection />
-      <FAQSection />
-      <MarqueeLogoSection />
-      <ContactSection />
-      <Footer />
+      {SECTIONS.map((Section, i) => (
+        <Section key={i} />
+      ))}
     </main>
   );
 }
